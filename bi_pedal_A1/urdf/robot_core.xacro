@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+
+    <material name="blue">
+        <color rgba="0.2 0.2 1 1"/>
+    </material>
+
+    <xacro:property name="scale_factor" value="0.001 0.001 0.001"/>
+    <xacro:property name="package_name" value="bi_pedal_A1"/>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** Base ******************************************* -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="world"/>
+
+    <link name="bottom_base">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/bottom_base.stl" scale="${scale_factor}"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/bottom_base.stl" scale="${scale_factor}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    
+
