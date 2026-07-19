@@ -1,0 +1,9 @@
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/uninstall.dir
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/bi_pedal_a1_uninstall.dir
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/test.dir
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/edit_cache.dir
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/rebuild_cache.dir
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/list_install_components.dir
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/install.dir
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/install/local.dir
+/home/legion5/ros2_ws/src/build/bi_pedal_a1/CMakeFiles/install/strip.dir

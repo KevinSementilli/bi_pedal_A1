@@ -1,0 +1,1 @@
+/home/legion5/ros2_ws/src/bi_pedal_a1/launch/rviz_sim.launch.py
