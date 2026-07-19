@@ -1,1 +1,0 @@
-/home/legion5/ros2_ws/src/build/bi_pedal_a1/ament_cmake_environment_hooks/local_setup.bash

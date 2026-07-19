@@ -1,6 +1,0 @@
-Invoking command in '/home/legion5/ros2_ws/src/build/bi_pedal_a1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/legion5/ros2_ws/src/bi_pedal_a1 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/legion5/ros2_ws/src/install/bi_pedal_a1
-Invoked command in '/home/legion5/ros2_ws/src/build/bi_pedal_a1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/legion5/ros2_ws/src/bi_pedal_a1 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/legion5/ros2_ws/src/install/bi_pedal_a1
-Invoking command in '/home/legion5/ros2_ws/src/build/bi_pedal_a1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/legion5/ros2_ws/src/build/bi_pedal_a1 -- -j32 -l32
-Invoked command in '/home/legion5/ros2_ws/src/build/bi_pedal_a1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/legion5/ros2_ws/src/build/bi_pedal_a1 -- -j32 -l32
-Invoking command in '/home/legion5/ros2_ws/src/build/bi_pedal_a1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/legion5/ros2_ws/src/build/bi_pedal_a1
-Invoked command in '/home/legion5/ros2_ws/src/build/bi_pedal_a1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/legion5/ros2_ws/src/build/bi_pedal_a1
