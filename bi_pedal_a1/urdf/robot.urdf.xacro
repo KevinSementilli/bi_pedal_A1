@@ -4,8 +4,8 @@
     <!-- <xacro:arg name="cmd_mode" default="position"/>
     <xacro:arg name="HW_mode" default="mock"/> -->
 
-    <xacro:include filename="robot_core.xacro"/>
-    <!-- <xacro:include filename="robot_core_2.xacro"/> -->
+    <!-- <xacro:include filename="robot_core.xacro"/> -->
+    <xacro:include filename="robot_core_2.xacro"/>
 
     <!-- <xacro:include filename="ros2_control.xacro"/> -->
 

@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="inertial_properties.xacro"/>
     
     <material name="grey">
         <color rgba="0.5 0.5 0.5 1"/>
@@ -32,13 +34,7 @@
                 <mesh filename="package://${package_name}/meshes/new/base_link.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="0 -0.00225 0.01017"/>
-            <mass value="2.234" />
-            <inertia ixx="0.001" ixy="0.00000022295" ixz="0.0000001396"
-                    iyx="0.00000022295" iyy="0.05" iyz="0.000004933"
-                    izx="0.0000001396" izy="0.000004933" izz="0.05" />
-        </inertial> -->
+        <xacro:base_link_inertial/>
     </link>
 
     <joint name="base_joint" type="fixed">
@@ -65,13 +61,7 @@
                 <mesh filename="package://${package_name}/meshes/left_hip.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="0.00262 0 0.04794"/>
-            <mass value="0.3847" />
-            <inertia ixx="0.0004" ixy="-0.0000013" ixz="-0.000002522"
-                    iyx="-0.0000013" iyy="0.0002" iyz="0.000000485"
-                    izx="-0.000002522" izy="0.000000485" izz="0.0002" />
-        </inertial> -->
+        <xacro:left_hip_inertial/>
     </link>
 
     <joint name="left_hip_joint" type="revolute">
@@ -100,13 +90,7 @@
                 <mesh filename="package://${package_name}/meshes/right_hip.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="-0.00262 0 0.04794"/>
-            <mass value="0.3847" />
-            <inertia ixx="0.0004" ixy="-0.0000013" ixz="0.000003369"
-                    iyx="-0.0000013" iyy="0.0002" iyz="0.000000485"
-                    izx="0.000003369" izy="-0.000000485" izz="0.0002" />
-        </inertial> -->
+        <xacro:right_hip_inertial/>
     </link>
 
     <joint name="right_hip_joint" type="revolute">
@@ -135,13 +119,7 @@
                 <mesh filename="package://${package_name}/meshes/left_thigh.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="0.0148 0 -0.201"/>
-            <mass value="0.619" />
-            <inertia ixx="0.009" ixy="0.000001214" ixz="0.000031265"
-                    iyx="0.000001214" iyy="0.009" iyz="0.000009833"
-                    izx="0.000031265" izy="0.000009833" izz="0.0002" />
-        </inertial> -->
+        <xacro:left_thigh_inertial/>
     </link>
 
     <joint name="left_thigh_joint" type="revolute">
@@ -170,13 +148,7 @@
                 <mesh filename="package://${package_name}/meshes/right_thigh.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="-0.0139 0 -0.201"/>
-            <mass value="0.619" />
-            <inertia ixx="0.009" ixy="0.000001214" ixz="0.000031265"
-                    iyx="0.000001214" iyy="0.009" iyz="0.000009833"
-                    izx="0.000031265" izy="0.000009833" izz="0.0002" />
-        </inertial> -->
+        <xacro:right_thigh_inertial/>
     </link>
 
     <joint name="right_thigh_joint" type="revolute">
@@ -205,13 +177,7 @@
                 <mesh filename="package://${package_name}/meshes/left_shin.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="-0.0136 0 -0.2296"/>
-            <mass value="0.542" />
-            <inertia ixx="0.006" ixy="0.000001214" ixz="0.000031265"
-                    iyx="0.000001214" iyy="0.005" iyz="0.000009833"
-                    izx="0.000031265" izy="0.000009833" izz="0.002" />
-        </inertial> -->
+        <xacro:left_shin_inertial/>
     </link>
 
     <joint name="left_shin_joint" type="revolute">
@@ -240,13 +206,7 @@
                 <mesh filename="package://${package_name}/meshes/right_shin.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="0.01466 0 -0.2296"/>
-            <mass value="0.542" />
-            <inertia ixx="0.006" ixy="0.000001214" ixz="-0.000007509"
-                    iyx="0.000001257" iyy="0.005" iyz="-0.000009833"
-                    izx="-0.000007509" izy="-0.000009833" izz="0.002" />
-        </inertial> -->
+        <xacro:right_shin_inertial/>
     </link>
 
     <joint name="right_shin_joint" type="revolute">
@@ -275,13 +235,7 @@
                 <mesh filename="package://${package_name}/meshes/new/left_foot.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="0.0049 0 -0.0351"/>
-            <mass value="0.233" />
-            <inertia ixx="0.002" ixy="0.000000214" ixz="-0.000045314"
-                    iyx="0.000000214" iyy="0.0002" iyz="0.000000194"
-                    izx="-0.000045314" izy="0.000000194" izz="0.0001" />
-        </inertial> -->
+        <xacro:left_foot_inertial/>
     </link>
 
     <joint name="left_foot_joint" type="revolute">
@@ -310,13 +264,7 @@
                 <mesh filename="package://${package_name}/meshes/new/right_foot.stl" scale="${scale_factor}"/>
             </geometry>
         </collision>
-        <!-- <inertial>
-            <origin xyz="-0.00477 0 -0.0351"/>
-            <mass value="0.233" />
-            <inertia ixx="0.002" ixy="-0.000000068" ixz="0.000045314"
-                    iyx="-0.000000068" iyy="0.0002" iyz="-0.000000137"
-                    izx="0.000045314" izy="-0.000000137" izz="0.0001" />
-        </inertial> -->
+        <xacro:right_foot_inertial/>
     </link>
 
     <joint name="right_foot_joint" type="revolute">
