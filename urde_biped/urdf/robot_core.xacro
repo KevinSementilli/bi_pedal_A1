@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="inertial_properties.xacro"/>
+    
+    <xacro:property name="scale" value="0.001 0.001 0.001"/>
+    <xacro:property name="package_name" value="urde_biped"/>
+
+    <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+    
+    <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** Base ******************************************* -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="base_link"/>
+
+    <link name="body_link">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/body_link.stl" scale="${scale}"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/body_link.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:base_link_inertial/>
+    </link>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="body_link"/>
+        <origin xyz="0 0 0.6324" rpy="0 0 ${pi/2}"/>
+    </joint>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** Left Hip *************************************** -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="left_hip">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes//left_hip.stl" scale="${scale}"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes//left_hip.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:left_hip_inertial/>
+    </link>
+
+    <joint name="left_hip_joint" type="revolute">
+        <parent link="body_link"/>
+        <child link="left_hip"/>
+        <origin xyz="-0.148 -0.0175 0.01" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="10" velocity="1"/>
+    </joint>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** Right Hip *************************************** -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="right_hip">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/right_hip.stl" scale="${scale}"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/right_hip.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:right_hip_inertial/>
+    </link>
+
+    <joint name="right_hip_joint" type="revolute">
+        <parent link="body_link"/>
+        <child link="right_hip"/>
+        <origin xyz="0.148 -0.0175 0.01" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${pi/2}" upper="${-pi/2}" effort="10" velocity="1"/>
+    </joint>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** Left thigh ************************************* -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="left_thigh">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/left_thigh.stl" scale="${scale}"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/left_thigh.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:left_thigh_inertial/>
+    </link>
+
+    <joint name="left_thigh_joint" type="revolute">
+        <parent link="left_hip"/>
+        <child link="left_thigh"/>
+        <origin xyz="0.0175 0 0.051" rpy="${-pi/2} 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="10" velocity="1"/>
+    </joint>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** right thigh ************************************ -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="right_thigh">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/right_thigh.stl" scale="${scale}"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/right_thigh.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:right_thigh_inertial/>
+    </link>
+
+    <joint name="right_thigh_joint" type="revolute">
+        <parent link="right_hip"/>
+        <child link="right_thigh"/>
+        <origin xyz="-0.0175 0 0.051" rpy="${-pi/2} 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="10" velocity="1"/>
+    </joint>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** Left shin ************************************* -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="left_shin">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/left_shin.stl" scale="${scale}"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/left_shin.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:left_shin_inertial/>
+    </link>
+
+    <joint name="left_knee_joint" type="revolute">
+        <parent link="left_thigh"/>
+        <child link="left_shin"/>
+        <origin xyz="0 0 -0.2885" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="10" velocity="1"/>
+    </joint>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** right shin ************************************* -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="right_shin">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/right_shin.stl" scale="${scale}"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/right_shin.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:right_shin_inertial/>
+    </link>
+
+    <joint name="right_knee_joint" type="revolute">
+        <parent link="right_thigh"/>
+        <child link="right_shin"/>
+        <origin xyz="0 0 -0.2885" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="10" velocity="1"/>
+    </joint>
+
+    <!-- ****************************************************************************************** -->
+    <!-- ***************************************** Left foot ************************************* -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="left_foot">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/left_foot.stl" scale="${scale}"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/left_foot.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:left_foot_inertial/>
+    </link>
+
+    <joint name="left_ankle_joint" type="revolute">
+        <parent link="left_shin"/>
+        <child link="left_foot"/>
+        <origin xyz="0 0 -0.2885" rpy="0 0 ${pi}"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="10" velocity="1"/>
+    </joint>
+
+        <!-- ****************************************************************************************** -->
+    <!-- ***************************************** Right foot ************************************* -->
+    <!-- ****************************************************************************************** -->
+
+    <link name="right_foot">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/right_foot.stl" scale="${scale}"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://${package_name}/meshes/right_foot.stl" scale="${scale}"/>
+            </geometry>
+        </collision>
+        <xacro:right_foot_inertial/>
+    </link>
+
+    <joint name="right_ankle_joint" type="revolute">
+        <parent link="right_shin"/>
+        <child link="right_foot"/>
+        <origin xyz="0 0 -0.2885" rpy="0 0 ${pi}"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="10" velocity="1"/>
+    </joint>
+
+</robot>

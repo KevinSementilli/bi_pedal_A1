@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="base_link_com" value="0 -0.00225 0.01017"/>
+    <xacro:property name="base_link_mass" value="2.234"/>
+    <xacro:property name="base_link_ixx" value="0.001"/>
+    <xacro:property name="base_link_ixy" value="0.00000022295"/>
+    <xacro:property name="base_link_ixz" value="0.0000001396"/>
+    <xacro:property name="base_link_iyy" value="0.05"/>
+    <xacro:property name="base_link_iyz" value="0.000004933"/>
+    <xacro:property name="base_link_izz" value="0.05"/>
+
+    <xacro:property name="left_hip_com" value="0.00262 0 0.04794"/>
+    <xacro:property name="left_hip_mass" value="0.3847"/>
+    <xacro:property name="left_hip_ixx" value="0.0004"/>
+    <xacro:property name="left_hip_ixy" value="-0.0000013"/>
+    <xacro:property name="left_hip_ixz" value="-0.000002522"/>
+    <xacro:property name="left_hip_iyy" value="0.0002"/>
+    <xacro:property name="left_hip_iyz" value="0.000000485"/>
+    <xacro:property name="left_hip_izz" value="0.0002"/>
+
+    <xacro:property name="right_hip_com" value="-0.00262 0 0.04794"/>
+    <xacro:property name="right_hip_mass" value="0.3847"/>
+    <xacro:property name="right_hip_ixx" value="0.0004"/>
+    <xacro:property name="right_hip_ixy" value="-0.0000013"/>
+    <xacro:property name="right_hip_ixz" value="0.000003369"/>
+    <xacro:property name="right_hip_iyy" value="0.0002"/>
+    <xacro:property name="right_hip_iyz" value="0.000000485"/>
+    <xacro:property name="right_hip_izz" value="0.0002"/>
+
+    <xacro:property name="left_thigh_com" value="0.0148 0 -0.201"/>
+    <xacro:property name="left_thigh_mass" value="0.619"/>
+    <xacro:property name="left_thigh_ixx" value="0.009"/>
+    <xacro:property name="left_thigh_ixy" value="0.000001214"/>
+    <xacro:property name="left_thigh_ixz" value="0.000031265"/>
+    <xacro:property name="left_thigh_iyy" value="0.009"/>
+    <xacro:property name="left_thigh_iyz" value="0.000009833"/>
+    <xacro:property name="left_thigh_izz" value="0.0002"/>
+
+    <xacro:property name="right_thigh_com" value="-0.0139 0 -0.201"/>
+    <xacro:property name="right_thigh_mass" value="0.619"/>
+    <xacro:property name="right_thigh_ixx" value="0.009"/>
+    <xacro:property name="right_thigh_ixy" value="0.000001214"/>
+    <xacro:property name="right_thigh_ixz" value="0.000031265"/>
+    <xacro:property name="right_thigh_iyy" value="0.009"/>
+    <xacro:property name="right_thigh_iyz" value="0.000009833"/>
+    <xacro:property name="right_thigh_izz" value="0.0002"/>
+
+    <xacro:property name="left_shin_com" value="-0.0136 0 -0.2296"/>
+    <xacro:property name="left_shin_mass" value="0.542"/>
+    <xacro:property name="left_shin_ixx" value="0.006"/>
+    <xacro:property name="left_shin_ixy" value="0.000001214"/>
+    <xacro:property name="left_shin_ixz" value="0.000031265"/>
+    <xacro:property name="left_shin_iyy" value="0.005"/>
+    <xacro:property name="left_shin_iyz" value="0.000009833"/>
+    <xacro:property name="left_shin_izz" value="0.002"/>
+
+    <xacro:property name="right_shin_com" value="0.01466 0 -0.2296"/>
+    <xacro:property name="right_shin_mass" value="0.542"/>
+    <xacro:property name="right_shin_ixx" value="0.006"/>
+    <xacro:property name="right_shin_ixy" value="-0.000000068"/>
+    <xacro:property name="right_shin_ixz" value="0.000045314"/>
+    <xacro:property name="right_shin_iyy" value="0.005"/>
+    <xacro:property name="right_shin_iyz" value="-0.000000137"/>
+    <xacro:property name="right_shin_izz" value="0.002"/>
+
+    <xacro:property name="left_foot_com" value="0.0049 0 -0.0351"/>
+    <xacro:property name="left_foot_mass" value="0.233"/>
+    <xacro:property name="left_foot_ixx" value="0.002"/>
+    <xacro:property name="left_foot_ixy" value="0.000000214"/>
+    <xacro:property name="left_foot_ixz" value="-0.000045314"/>
+    <xacro:property name="left_foot_iyy" value="0.0002"/>
+    <xacro:property name="left_foot_iyz" value="0.000000194"/>
+    <xacro:property name="left_foot_izz" value="0.0001"/>
+
+    <xacro:property name="right_foot_com" value="-0.00477 0 -0.0351"/>
+    <xacro:property name="right_foot_mass" value="0.233"/>
+    <xacro:property name="right_foot_ixx" value="0.002"/>
+    <xacro:property name="right_foot_ixy" value="-0.000000068"/>
+    <xacro:property name="right_foot_ixz" value="0.000045314"/>
+    <xacro:property name="right_foot_iyy" value="0.0002"/>
+    <xacro:property name="right_foot_iyz" value="-0.000000137"/>
+    <xacro:property name="right_foot_izz" value="0.0001"/>
+
+    <xacro:macro name="link_inertial" params="xyz mass ixx ixy ixz iyy iyz izz">
+        <inertial>
+            <origin xyz="${xyz}"/>
+            <mass value="${mass}"/>
+            <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}"
+                     iyx="${ixy}" iyy="${iyy}" iyz="${iyz}"
+                     izx="${ixz}" izy="${iyz}" izz="${izz}"/>
+        </inertial>
+    </xacro:macro>
+
+    <!-- Placeholder inertial for fixed sensor links (replace with real values) -->
+    <xacro:macro name="sensor_inertial">
+        <xacro:link_inertial xyz="0 0 0" mass="0.1"
+                             ixx="0.00001" ixy="0" ixz="0"
+                             iyy="0.00001" iyz="0" izz="0.00001"/>
+    </xacro:macro>
+
+    <xacro:macro name="base_link_inertial">
+        <xacro:link_inertial xyz="${base_link_com}" mass="${base_link_mass}"
+                             ixx="${base_link_ixx}" ixy="${base_link_ixy}" ixz="${base_link_ixz}"
+                             iyy="${base_link_iyy}" iyz="${base_link_iyz}" izz="${base_link_izz}"/>
+    </xacro:macro>
+
+    <xacro:macro name="left_hip_inertial">
+        <xacro:link_inertial xyz="${left_hip_com}" mass="${left_hip_mass}"
+                             ixx="${left_hip_ixx}" ixy="${left_hip_ixy}" ixz="${left_hip_ixz}"
+                             iyy="${left_hip_iyy}" iyz="${left_hip_iyz}" izz="${left_hip_izz}"/>
+    </xacro:macro>
+
+    <xacro:macro name="right_hip_inertial">
+        <xacro:link_inertial xyz="${right_hip_com}" mass="${right_hip_mass}"
+                             ixx="${right_hip_ixx}" ixy="${right_hip_ixy}" ixz="${right_hip_ixz}"
+                             iyy="${right_hip_iyy}" iyz="${right_hip_iyz}" izz="${right_hip_izz}"/>
+    </xacro:macro>
+
+    <xacro:macro name="left_thigh_inertial">
+        <xacro:link_inertial xyz="${left_thigh_com}" mass="${left_thigh_mass}"
+                             ixx="${left_thigh_ixx}" ixy="${left_thigh_ixy}" ixz="${left_thigh_ixz}"
+                             iyy="${left_thigh_iyy}" iyz="${left_thigh_iyz}" izz="${left_thigh_izz}"/>
+    </xacro:macro>
+
+    <xacro:macro name="right_thigh_inertial">
+        <xacro:link_inertial xyz="${right_thigh_com}" mass="${right_thigh_mass}"
+                             ixx="${right_thigh_ixx}" ixy="${right_thigh_ixy}" ixz="${right_thigh_ixz}"
+                             iyy="${right_thigh_iyy}" iyz="${right_thigh_iyz}" izz="${right_thigh_izz}"/>
+    </xacro:macro>
+
+    <xacro:macro name="left_shin_inertial">
+        <xacro:link_inertial xyz="${left_shin_com}" mass="${left_shin_mass}"
+                             ixx="${left_shin_ixx}" ixy="${left_shin_ixy}" ixz="${left_shin_ixz}"
+                             iyy="${left_shin_iyy}" iyz="${left_shin_iyz}" izz="${left_shin_izz}"/>
+    </xacro:macro>
+
+    <xacro:macro name="right_shin_inertial">
+        <xacro:link_inertial xyz="${right_shin_com}" mass="${right_shin_mass}"
+                             ixx="${right_shin_ixx}" ixy="${right_shin_ixy}" ixz="${right_shin_ixz}"
+                             iyy="${right_shin_iyy}" iyz="${right_shin_iyz}" izz="${right_shin_izz}"/>
+    </xacro:macro>
+
+    <xacro:macro name="left_foot_inertial">
+        <xacro:link_inertial xyz="${left_foot_com}" mass="${left_foot_mass}"
+                             ixx="${left_foot_ixx}" ixy="${left_foot_ixy}" ixz="${left_foot_ixz}"
+                             iyy="${left_foot_iyy}" iyz="${left_foot_iyz}" izz="${left_foot_izz}"/>
+    </xacro:macro>
+
+    <xacro:macro name="right_foot_inertial">
+        <xacro:link_inertial xyz="${right_foot_com}" mass="${right_foot_mass}"
+                             ixx="${right_foot_ixx}" ixy="${right_foot_ixy}" ixz="${right_foot_ixz}"
+                             iyy="${right_foot_iyy}" iyz="${right_foot_iyz}" izz="${right_foot_izz}"/>
+    </xacro:macro>
+
+</robot>
